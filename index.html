@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-TW" data-theme="light">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCRLDNYHL7"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DCRLDNYHL7');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NTPU 通識試排系統</title>
@@ -11,7 +20,7 @@
 
 <nav class="navbar navbar-light bg-white shadow-sm mb-4 sticky-top" style="background-color: var(--bg-card) !important; border-bottom: 1px solid var(--border-color);">
     <div class="container">
-        <span class="navbar-brand mb-0 h1 fw-bold" style="color: var(--text-main);">🎓 NTPU 通識試排系統 <span class="badge bg-primary rounded-pill fs-6">v1</span></span>
+        <span class="navbar-brand mb-0 h1 fw-bold" style="color: var(--text-main);">🎓 NTPU 通識試排系統 <span class="badge bg-primary rounded-pill fs-6">v1.1.0</span></span>
         <div class="d-flex align-items-center gap-3">
             <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" onclick="toggleTheme()" id="theme-btn">
                 <span>🌙</span> 切換日夜模式
@@ -96,8 +105,16 @@
 
 <footer class="text-center py-4 mt-4" style="border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem;">
     <div class="container">
-        © 2025 黃振彰 · <a href="https://github.com/huangzz02" target="_blank" class="footer-link">GitHub</a>
+        <div class="mb-1">
+            © 2025 黃振彰 · <a href="https://github.com/huangzz02" target="_blank" class="footer-link">GitHub</a>
+        </div>
+        
+        <div id="busuanzi_container_site_pv" style="opacity: 0.7; font-size: 0.75rem;">
+            瀏覽次數： <span id="busuanzi_value_site_pv"></span>
+        </div>
     </div>
+    
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

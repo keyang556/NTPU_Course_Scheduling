@@ -398,6 +398,12 @@ function loadFromUrl() {
 }
 
 function copyShareLink() {
+    // 加入這行：向 GA 發送「點擊分享」的事件
+    gtag('event', 'share_link_clicked', {
+        'event_category': 'engagement',
+        'event_label': 'Share Button'
+    });
+
     navigator.clipboard.writeText(window.location.href).then(() => {
         alert('✅ 連結已複製！\n\n您可以將此連結傳給朋友，他們點開後就會看到您目前的志願排序喔！');
     });
