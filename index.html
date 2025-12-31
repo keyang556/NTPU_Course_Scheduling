@@ -20,7 +20,7 @@
 
 <nav class="navbar navbar-light bg-white shadow-sm mb-4 sticky-top" style="background-color: var(--bg-card) !important; border-bottom: 1px solid var(--border-color);">
     <div class="container">
-        <span class="navbar-brand mb-0 h1 fw-bold" style="color: var(--text-main);">🎓 NTPU 通識試排系統 <span class="badge bg-primary rounded-pill fs-6">v1.1.2</span></span>
+        <h1 class="navbar-brand mb-0 h1 fw-bold" style="color: var(--text-main);">🎓 NTPU 通識試排系統 <span class="badge bg-primary rounded-pill fs-6">v1.1.2</span></h1>
         <div class="d-flex align-items-center gap-3">
             <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" onclick="toggleTheme()" id="theme-btn">
                 <span>🌙</span> 切換日夜模式
@@ -40,7 +40,7 @@
                     <h6 class="fw-bold mb-0">🏆 志願排序 (可拖曳)</h6>
                     <div class="d-flex align-items-center gap-2">
                         <small class="text-muted" id="wish-count">0 門</small>
-                        <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size:0.8rem; height: 24px; line-height: 1;" onclick="clearWishlist()">🗑️ 清空</button>
+                        <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size:0.8rem; height: 24px; line-height: 1;" onclick="clearWishlist()" aria-label="清空志願清單">🗑️ 清空</button>
                     </div>
                 </div>
                 <ul class="list-group list-group-flush small" id="wish-list">
@@ -51,7 +51,7 @@
             <div class="card p-3 mb-3 shadow-sm border-0">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="fw-bold mb-0">📅 屏蔽時段</h6>
-                    <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size:0.8rem; height: 24px; line-height: 1;" onclick="clearBlocked()">🗑️ 清除</button>
+                    <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size:0.8rem; height: 24px; line-height: 1;" onclick="clearBlocked()" aria-label="清除屏蔽時段">🗑️ 清除</button>
                 </div>
 
                 <div class="time-grid" id="time-grid"></div>
@@ -69,7 +69,9 @@
         <div class="col-lg-8">
             <div class="card p-3 mb-3 border-0 shadow-sm">
                 <div class="row g-2 align-items-center">
-                    <div class="col-md-5 col-12"> <input type="text" id="search-input" class="form-control" placeholder="🔍 搜尋課名、老師..." 
+                    <div class="col-md-5 col-12">
+                        <label for="search-input" class="visually-hidden">搜尋課名、老師</label>
+                        <input type="text" id="search-input" class="form-control" placeholder="🔍 搜尋課名、老師..."
                                style="background: var(--bg-body); color: var(--text-main); border-color: var(--border-color);"
                                oninput="renderCourses()">
                     </div>

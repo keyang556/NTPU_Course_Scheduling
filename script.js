@@ -40,9 +40,16 @@ function initTimeGrid() {
         days.forEach((d, index) => {
             const dayNum = index + 1;
             const slotId = `${dayNum}-${p}`;
-            grid.innerHTML += `<div class="grid-cell" id="slot-${slotId}" onclick="toggleBlockSlot('${slotId}')"></div>`;
+            grid.innerHTML += `<div class="grid-cell" id="slot-${slotId}" role="button" tabindex="0" aria-label="星期${d} 第${p}節" onclick="toggleBlockSlot('${slotId}')" onkeydown="handleGridKeyDown(event, '${slotId}')"></div>`;
         });
     });
+}
+
+function handleGridKeyDown(event, slotId) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleBlockSlot(slotId);
+    }
 }
 
 function toggleBlockSlot(slotId) {
@@ -286,11 +293,26 @@ function updateWishList() {
                     <small class="text-muted d-block">${c.time} | ${c.teacher}</small>
                 </div>
             </div>
-            <button class="btn btn-remove-wish py-0 border-0" onclick="toggleSchedule('${c.id}')">×</button>
+            <div class="d-flex align-items-center gap-1">
+                <div class="d-flex flex-column">
+                    <button class="btn btn-sm btn-link p-0 text-decoration-none" onclick="moveWishlistItem(${index}, -1)" aria-label="上移" ${index === 0 ? 'disabled' : ''}>⬆️</button>
+                    <button class="btn btn-sm btn-link p-0 text-decoration-none" onclick="moveWishlistItem(${index}, 1)" aria-label="下移" ${index === mySchedule.length - 1 ? 'disabled' : ''}>⬇️</button>
+                </div>
+                <button class="btn btn-remove-wish py-0 border-0" onclick="toggleSchedule('${c.id}')" aria-label="移除 ${c.name}">×</button>
+            </div>
         </li>`;
     });
     list.innerHTML = html;
     addDragEvents();
+}
+
+function moveWishlistItem(index, direction) {
+    if (index + direction < 0 || index + direction >= mySchedule.length) return;
+
+    const temp = mySchedule[index];
+    mySchedule[index] = mySchedule[index + direction];
+    mySchedule[index + direction] = temp;
+    updateUI();
 }
 
 function addDragEvents() {
